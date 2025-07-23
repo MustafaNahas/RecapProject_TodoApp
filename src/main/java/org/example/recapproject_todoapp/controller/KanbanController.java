@@ -51,9 +51,14 @@ public class KanbanController {
         return kanbanService.update(id, toDo);
     }
     @DeleteMapping("/{id}")
-    public void delete(@PathVariable String id)
-    {
-        kanbanService.delete(id);
+    public ResponseEntity<Void> delete(@PathVariable String id) {
+        boolean deleted = kanbanService.delete(id);
+
+        if (deleted) {
+            return ResponseEntity.noContent().build(); // 204 No Content
+        } else {
+            return ResponseEntity.notFound().build(); // 404 Not Found
+        }
     }
 
 }
