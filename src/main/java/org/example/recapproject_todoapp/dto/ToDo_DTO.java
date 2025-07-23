@@ -1,4 +1,6 @@
 package org.example.recapproject_todoapp.dto;
 
-public record ToDo_DTO() {
+import org.example.recapproject_todoapp.service.Status;
+
+public record ToDo_DTO(String title, Status status, String description) {
 }
